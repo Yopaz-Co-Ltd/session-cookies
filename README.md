@@ -5,7 +5,7 @@
 ### 1. Demo **không dùng Cookie/Session**
 
 ```bash
-php -S localhost:8000 - t login_demo_no_cookie_session/public
+make run-no-cookie
 ```
 Truy cập: http://localhost:8000
 
@@ -14,10 +14,20 @@ Dữ liệu login không được lưu sau khi chuyển trang. Mỗi trang phả
 ### 2. Demo có dùng Cookie
 
 ```bash
-php -S localhost:8000 -t login_demo_with_cookie_session/public
+make run-with-cookie
 ```
-Truy cập: http://localhost:8000
+Truy cập: http://localhost:8001
+🔹 Cookie được dùng để lưu user_id phía client.
+🔹 Trình duyệt tự gửi cookie trong mỗi request.
 
+### 3. Demo có dùng Cookie & Session
+
+```bash
+make run-with-cookie-session
+```
+Truy cập: http://localhost:8002
+🔹 PHP sử dụng PHPSESSID trong cookie để map với file session trên server.
+🔹 Dữ liệu người dùng được lưu hoàn toàn ở server qua $_SESSION.
 
 ### 💡 Mục tiêu
 So sánh ứng dụng thực tế của Cookie và Session
@@ -25,9 +35,6 @@ So sánh ứng dụng thực tế của Cookie và Session
 Giải thích cách duy trì trạng thái đăng nhập
 
 Làm rõ vai trò của từng phương pháp trong lập trình web bằng PHP
-
-### 🧠 Ghi chú
-Không cần cài đặt web server phức tạp (dùng php -S là đủ)
 
 ### 📜 Tài liệu kèm theo
 File trình chiếu LaTeX: session_cookies_presentation.tex và bản PDF tương ứng

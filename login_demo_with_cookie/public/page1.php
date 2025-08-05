@@ -1,12 +1,13 @@
 <?php
-session_start();
+$users = require __DIR__ . '/../data/users.php';
+$user_id = $_COOKIE['user_id'] ?? null;
 
-if (empty($_SESSION['user'])) {
+if (!$user_id || !isset($users['by_id'][$user_id])) {
     header("Location: login.php?error=" . urlencode("Vui lòng đăng nhập lại."));
     exit;
 }
 
-$user = $_SESSION['user'];
+$username = $users['by_id'][$user_id];
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +21,11 @@ $user = $_SESSION['user'];
   <div class="container">
     <div class="login-form">
       <h2>Trang 1</h2>
-      <p>Xin chào <strong><?php echo htmlspecialchars($user['username']); ?></strong>, đây là nội dung Trang 1.</p>
+      <p>Xin chào <strong><?php echo htmlspecialchars($username); ?></strong>, đây là nội dung Trang 1.</p>
       <div style="margin-top: 20px;">
         <a href="dashboard.php"><button>Quay về Dashboard</button></a>
       </div>
     </div>
   </div>
-</bod
+</body>
+</html>

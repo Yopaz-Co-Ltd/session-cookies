@@ -1,23 +1,13 @@
 <?php
-session_start();
 $users = require __DIR__ . '/../data/users.php';
+$user_id = $_COOKIE['user_id'] ?? null;
 
-if (!empty($_SESSION['user'])) {
-    $user = $_SESSION['user'];
-}
-elseif (!empty($_COOKIE['user_id']) && isset($users['by_id'][$_COOKIE['user_id']])) {
-    $user_id = $_COOKIE['user_id'];
-    $username = $users['by_id'][$user_id];
-
-    $_SESSION['user'] = [
-        'id' => $user_id,
-        'username' => $username,
-    ];
-    $user = $_SESSION['user'];
-} else {
+if (!$user_id || !isset($users['by_id'][$user_id])) {
     header("Location: login.php?error=" . urlencode("Vui lòng đăng nhập lại."));
     exit;
 }
+
+$username = $users['by_id'][$user_id];
 ?>
 
 <!DOCTYPE html>
