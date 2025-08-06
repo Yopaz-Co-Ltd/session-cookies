@@ -64,6 +64,28 @@
   \textbf{Nhờ vậy:} Server có thể nhận biết user trong mỗi request
 \end{frame}
 
+\begin{frame}{Có những cách nào để set Cookie?}
+  \begin{itemize}
+    \item \textbf{1. Set cookie bằng HTTP header (thường dùng trong backend)}:
+      \begin{enumerate}
+        \item Ví dụ PHP: \texttt{setcookie("user\_id", "12345", time() + 3600);}
+        \item Trả về header: \texttt{Set-Cookie: user\_id=12345; Expires=...}
+      \end{enumerate}
+
+    \item \textbf{2. Set cookie bằng JavaScript (trên trình duyệt)}:
+      \begin{itemize}
+        \item \texttt{document.cookie = "theme=dark; path=/; max-age=3600";}
+        \item Có thể set cookie động tuỳ tình huống UX/UI
+      \end{itemize}
+
+    \item \textbf{3. Set cookie thông qua HTTP response từ server (giao tiếp backend/frontend)}:
+      \begin{itemize}
+        \item Các framework backend (Laravel, Express, v.v.) đều hỗ trợ
+        \item Ví dụ: trong Laravel → \texttt{return response(...)->cookie(...);}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Vấn đề bảo mật với Cookie}
   \begin{itemize}
     \item Cookie được lưu phía người dùng → người dùng có thể sửa!
