@@ -44,7 +44,7 @@ Làm rõ vai trò của từng phương pháp trong lập trình web bằng PHP
 File trình chiếu LaTeX: session_cookies_presentation.tex và bản PDF tương ứng
 
 
-### Cau lenh XSS
+### ⚠️ Câu lệnh XSS 
 
 ```bash
 <script>
