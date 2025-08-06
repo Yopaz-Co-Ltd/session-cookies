@@ -1,12 +1,19 @@
 <?php
 session_start();
 
+$user_id = $_SESSION['user_id'];
+
 if (empty($_SESSION['user'])) {
     header("Location: login.php?error=" . urlencode("Vui lòng đăng nhập lại."));
     exit;
 }
 
-$user = $_SESSION['user'];
+$username = $_SESSION['user']['username'];
+
+$msg = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $msg = $_POST['message'] ?? '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +27,26 @@ $user = $_SESSION['user'];
   <div class="container">
     <div class="login-form">
       <h2>Trang 1</h2>
-      <p>Xin chào <strong><?php echo htmlspecialchars($user['username']); ?></strong>, đây là nội dung Trang 1.</p>
+
+      <p>Xin chào <strong><?php echo $username ?></strong></p>
+
+      <form method="POST" style="margin-bottom: 20px; margin-top: 20px;">
+        <label for="message">Gửi nội dung:</label>
+        <textarea name="message" id="message" rows="4" cols="35"></textarea>
+        <button style="margin-top: 20px;" type="submit">Gửi</button>
+      </form>
+
+      <?php if ($msg): ?>
+        <h4>Nội dung bạn vừa gửi:</h4>
+        <div style="background: #eee; padding: 10px; border-radius: 5px; margin-top: 10px;">
+          <?php echo $msg; ?>
+        </div>
+      <?php endif; ?>
+
       <div style="margin-top: 20px;">
         <a href="dashboard.php"><button>Quay về Dashboard</button></a>
       </div>
     </div>
   </div>
-</bod
+</body>
+</html>
