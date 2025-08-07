@@ -132,16 +132,18 @@
   \begin{itemize}
     \item Địa chỉ IP gốc
     \item Trình duyệt (User-Agent)
-    \item Device fingerprint (nếu cần)
   \end{itemize}
 
-  \item ⏳ Hạn chế thời gian sống của session
-  \item 🔁 Sử dụng access token ngắn hạn + refresh token dài hạn
-  \item ✅ Luôn kiểm tra quyền truy cập phía server có được phép xem phim không, trước khi gửi file video về cho trình duyệt
+  \item ⏳ Hạn chế thời gian sống của session (timeout)
+  \item 🛡 Thiết lập cookie với \texttt{HttpOnly}, \texttt{Secure}, \texttt{SameSite=Strict}
+  \item 🔐 Bảo vệ form với \textbf{CSRF Token}
+  \item ✅ Luôn kiểm tra quyền truy cập phía server trước khi gửi dữ liệu quan trọng (ví dụ: file video)
 \end{itemize}
 \end{frame}
 
 \begin{frame}{So sánh nhanh Cookie vs Session}
+  \centering
+  \renewcommand{\arraystretch}{1.5}
   \begin{tabular}{|l|c|c|}
     \hline
     \textbf{Tiêu chí} & \textbf{Cookie} & \textbf{Session} \\
