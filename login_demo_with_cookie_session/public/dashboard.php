@@ -31,7 +31,7 @@ elseif (!empty($_COOKIE['user_id']) && isset($users['by_id'][$_COOKIE['user_id']
   <div class="container">
     <div class="login-form">
       <h2>Xin chào, <?php echo htmlspecialchars($username); ?>!</h2>
-      <p>Ghi nhớ đăng nhập bằng <strong>cookie</strong>.</p>
+      <p>Ghi nhớ đăng nhập bằng <strong>cookie và session</strong>.</p>
 
       <hr style="margin: 20px 0;">
 

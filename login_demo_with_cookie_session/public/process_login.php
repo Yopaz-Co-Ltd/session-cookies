@@ -1,5 +1,8 @@
 <?php
 session_start();
+echo session_save_path();
+die();
+
 $users = require __DIR__ . '/../data/users.php';
 $valid_users = $users['users'];
 
